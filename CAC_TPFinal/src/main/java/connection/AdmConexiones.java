@@ -10,8 +10,8 @@ import java.sql.DriverManager;
 public class AdmConexiones {
     public static Connection getConnection() {
 		String url = "jdbc:mysql://127.0.0.1:3306/integrador_cac";
-		String username = "root";
-		String password = "babolat";
+		String username = "vicgaba";
+		String password = "Clementina06";
 		
 		String driverName = "com.mysql.cj.jdbc.Driver";
 		/*

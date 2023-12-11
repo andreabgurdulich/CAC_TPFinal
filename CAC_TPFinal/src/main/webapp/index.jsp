@@ -58,7 +58,7 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link" aria-current="page" href="#" style="color: lightslategray;">Los oradores</a>
+                                <a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>/api/ListadoOradorController" style="color: lightslategray;">Los oradores</a>
 
                             </li>
 
