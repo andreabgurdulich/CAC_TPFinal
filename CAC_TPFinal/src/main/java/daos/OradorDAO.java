@@ -17,17 +17,21 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.sql.PreparedStatement;
 
 public class OradorDAO {
 
-        private static final String SQL_DELETE = "UPDATE orador SET estado=false WHERE ID = ?";
+        private static final String SQL_DELETE = "UPDATE orador SET estado='0' WHERE ID = ?";
 	
+        //instancio el logger
+        static Logger logger = LoggerFactory.getLogger(Orador.class);
         //Métodos de Búsqueda
         //Búsqueda por ID
         public Orador getById(int id) {
-		String sql = "SELECT * FROM ORADOR WHERE ID="+id;
+		String sql = "SELECT * FROM ORADOR WHERE id="+id;
 		
 		//Conexión
 		Connection con = AdmConexiones.getConnection();
@@ -50,10 +54,10 @@ public class OradorDAO {
 				String mail = rs.getString(4);
 				String tema = rs.getString(5);
 				Date fecha_alta = rs.getDate(6);
-				Boolean estado = rs.getBoolean(7);
+				String estado = rs.getString(7);
 				
 				//Se instancia un Orador y se le asignan los valores  recuperados de la DB.
-				oradorDB = new Orador(id_orador,nombre,apellido,mail,tema, (java.sql.Date) fecha_alta,estado);
+				oradorDB = new Orador(id_orador,nombre,apellido,mail,tema, fecha_alta,estado);
 			}			
 		} catch (SQLException e) {
 			// ERRORES
@@ -69,7 +73,7 @@ public class OradorDAO {
 		//Conexión
 		Connection con = AdmConexiones.getConnection();
 	
-		List<Orador> oradores = new ArrayList<Orador>();
+		List<Orador> oradores = new ArrayList<>();
 		
 		//Statement
 		try {
@@ -88,16 +92,13 @@ public class OradorDAO {
 				String mail = rs.getString(4);
 				String tema = rs.getString(5);
 				Date fecha_alta = rs.getDate(6);
-				Boolean estado = rs.getBoolean(7);
+				String estado = rs.getString(7);
 				
 				//Instanciamos el y se le asignan los valores  recuperados de la DB.
-				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail,tema, (java.sql.Date) fecha_alta,estado);
+				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail,tema, fecha_alta,estado);
 				
 				//Si el orador está vigente, se agrega a la lista
-                                if(oradorDB.getEstado()==true)
-                                {
-                                    oradores.add(oradorDB);
-                                }
+                                oradores.add(oradorDB);
 			}	
 		} catch (SQLException e) {
 			// ERRORES
@@ -118,7 +119,7 @@ public class OradorDAO {
 		if(con != null) { 
 			// Se declara el INSERT a la base
 			String sql = "INSERT INTO ORADOR (nombre, apellido, mail, tema) ";
-			sql += "VALUES('"+nombre+"',"+apellido+",'"+mail+"','"+tema+"')";
+			sql += "VALUES('"+nombre+"','"+apellido+"','"+mail+"','"+tema+"')";
 			
 			//Try-Catch
 			try {
@@ -138,7 +139,7 @@ public class OradorDAO {
         //Read
         @SuppressWarnings("empty-statement")
 	public List<Orador> listaDeOradores() {
-		String sql = "SELECT * FROM ORADOR ";
+		String sql = "SELECT * FROM orador ";
 		
 		//Conexión
 		Connection con = AdmConexiones.getConnection();
@@ -162,16 +163,17 @@ public class OradorDAO {
 				String mail = rs.getString(4);
 				String tema = rs.getString(5);
 				Date fecha_alta = rs.getDate(6);
-				Boolean estado = rs.getBoolean(7);
+				String estado = rs.getString(7);
 				
 				//Crear una instancia de orador
-				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail, tema, (java.sql.Date) fecha_alta,estado);
+				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail, tema, fecha_alta, estado);
 				
 				//Si el Orador está vigente (estado = True), lo agrego a la lista 
-				if(estado==true)
-                                {
-                                    list.add(oradorDB);
-                                }
+//				if(estado)
+//                                {
+//                                    list.add(oradorDB);
+//                                }
+                            list.add(oradorDB);
 			}			
 			
 			//cierro la conexion
@@ -185,19 +187,20 @@ public class OradorDAO {
 
 	
         //Update
-	public void actualizarOrador(int id_orador,String nombre, String apellido, String mail, String tema) {
+	public void actualizarOrador(int id_orador,String nombre, String apellido, String mail, String tema, String estado) {
 		Connection con = AdmConexiones.getConnection();
 		if(con != null) { 
-			String sql = "UPDATE ORADOR "
+			String sql = "UPDATE orador "
 					+ " set nombre='"+nombre+"',"
 					+ " apellido='"+apellido+"',"
                                         + " mail='"+mail+"',"
-					+ " tema='"+ tema +"'"
-					+ " WHERE id_orador = '"+id_orador+"'";		
-		
+					+ " tema='"+ tema +"',"
+                                        + " estado='"+ estado +"'"
+					+ " WHERE id = "+id_orador+";";		
+                        logger.info("Update SQL: "+sql);
 			try {
 				Statement st = con.createStatement();			
-				
+				logger.info("Update SQL: "+sql);
                                 //Intenta ejecutar el SQL
                                 st.executeUpdate(sql);
                                 
@@ -210,17 +213,23 @@ public class OradorDAO {
 	}
 	
 	//Delete	      
-        public int eliminarOrador(int id) {
+        public void eliminarOrador(int id) {
         Connection conn = null;
-        PreparedStatement stmt = null;
+        Statement stmt = null;
         int cant_registros = 0;
         
         try
         {
             conn = AdmConexiones.getConnection();
-            stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, id);
-            cant_registros = stmt.executeUpdate();
+            String sql = "UPDATE ORADOR "
+                    + "set estado = '0' "
+                    + "WHERE id = '"+id+"'";
+//            stmt = conn.prepareStatement(SQL_DELETE);
+//            stmt.setInt(1, id);
+            logger.info(sql);
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+//            cant_registros = stmt.executeUpdate();
         
         } 
         
@@ -241,6 +250,6 @@ public class OradorDAO {
                 }
          }
         
-        return cant_registros;
+//        return cant_registros;
     }
 }

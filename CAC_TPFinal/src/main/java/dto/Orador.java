@@ -4,22 +4,22 @@
  */
 package dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
  * @author Usuario
  */
 public class Orador {
-    int id_orador;
-    String nombre;
-    String apellido;
-    String mail;
-    String tema;
-    Date fecha_alta;
-    Boolean estado;
+    private int id_orador;
+    private String nombre;
+    private String apellido;
+    private String mail;
+    private String tema;
+    private Date fecha_alta;
+    private String estado;
 
-    public Orador(int id_orador, String nombre, String apellido, String mail, String tema, Date fecha_alta, Boolean estado) {
+    public Orador(int id_orador, String nombre, String apellido, String mail, String tema, Date fecha_alta, String estado) {
         this.id_orador = id_orador;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -28,6 +28,16 @@ public class Orador {
         this.fecha_alta = fecha_alta;
         this.estado = estado;
     }
+
+    public Orador(int id_orador, String nombre, String apellido, String mail, String tema) {
+        this.id_orador = id_orador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.tema = tema;
+    }
+    
+    
 
     public int getId_orador() {
         return id_orador;
@@ -77,11 +87,11 @@ public class Orador {
         this.fecha_alta = fecha_alta;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
     

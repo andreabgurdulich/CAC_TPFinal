@@ -6,15 +6,15 @@ package controllers;
 
 import daos.OradorDAO;
 import dto.Orador;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/api/BuscarController")
+@WebServlet("/api/BuscarOradorController")
 public class BuscarOradorController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,9 +28,9 @@ public class BuscarOradorController extends HttpServlet {
 		List<Orador> oradores = dao.getByNombre(nombre);
 		
 		//guardar en el request el producto
-		req.setAttribute("listado", oradores);
+		req.setAttribute("oradores", oradores);
 		
 		//ir a la siguiente pagina
-		getServletContext().getRequestDispatcher("/oradores.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);
 	}
 }

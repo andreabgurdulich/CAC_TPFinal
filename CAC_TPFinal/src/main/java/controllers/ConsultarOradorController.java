@@ -6,11 +6,11 @@ package controllers;
 
 import connection.AdmConexiones;
 import dto.Orador;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,7 +49,7 @@ public class ConsultarOradorController extends HttpServlet {
 				String mail = rs.getString(4);
 				String tema = rs.getString(5);
 				Date fecha_alta = rs.getDate(6);
-				Boolean estado = rs.getBoolean(7);
+				String estado = rs.getString(7);
 				
 				//campos crear un objeto????
 				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail,tema, (java.sql.Date) fecha_alta,estado);
