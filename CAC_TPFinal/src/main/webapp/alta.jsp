@@ -23,9 +23,14 @@
                           <input name="mail" type="text" class="form-control" id="hechoTextarea" placeholder="Mail" maxlength="50">
                         </div>
                         <div class="my-3 mx-3">
-                          <input name="tema" type="text" class="form-control" id="codigoTextarea" maxlength="7" placeholder="Tema">
+                          <input name="tema" type="text" class="form-control" id="codigoTextarea" maxlength="255" placeholder="Tema">
                         </div>
-                        <button class="btn btn-primary my-3">
+                        <select class="form-select6" aria-label="Default select example">
+                            <option selected="1" class="col-2">Activo</option>
+                            <option value="0" class="col-2">Deshabilitado</option>
+                          </select>
+                        <br>
+                        <button class="btn btn-primary my-3 col-6">
                             Dar de alta
                         </button>
                     </form>
