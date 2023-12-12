@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to- fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css">
         <title>Navbar</title>
     </head>
 
@@ -16,9 +16,9 @@
 
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="<%=request.getContextPath()%>">
 
-                    <img src="assets/images/codoacodo.png" alt="logo codo a codo" width="150" height="90">
+                    <img src="<%=request.getContextPath()%>/assets/images/codoacodo.png" alt="logo codo a codo" width="150" height="90">
 
                 </a>
 

@@ -20,13 +20,11 @@
       <table class="table table-sm table-striped table-hover border border-success">
                       <thead>
                         <tr>
-                          <th scope="col">Id</th>
                           <th scope="col">Nombre</th>
                           <th scope="col">Apellido</th>
                           <th scope="col">Mail</th>
                           <th scope="col">Tema</th>
                           <th schope="col">Fecha Alta</th>
-                          <th scope="col">Estado</th>
                         </tr>
                       </thead>
           <% 
@@ -41,13 +39,13 @@
             %>
 
              <tr>
-                <th scope="row"> <%=orador.getId_orador()%> </th>
+                
                 <td><%=orador.getNombre() %></td>
                 <td><%=orador.getApellido() %></td>
                 <td><%=orador.getMail() %></td>
                 <td><%=orador.getTema() %></td>
                 <td><%=orador.getFecha_alta() %><td>
-                <td><%=orador.getEstado() %></td>
+                
                 <td>
                   <a class="btn btn-danger" href="<%=request.getContextPath()%>/api/EliminarOradorController?id=<%=orador.getId_orador()%>" role="button">Eliminar</a> | 
                   <a class="btn btn-secondary" href="<%=request.getContextPath()%>/api/EditarOradorController?id=<%=orador.getId_orador()%>" role="button">Editar</a>
@@ -64,5 +62,6 @@
                       
             </div>
         </main>
+             <%@include file="footer.jsp" %>
     </body>	
 </html>

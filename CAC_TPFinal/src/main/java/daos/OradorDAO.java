@@ -164,16 +164,16 @@ public class OradorDAO {
 				String tema = rs.getString(5);
 				Date fecha_alta = rs.getDate(6);
 				String estado = rs.getString(7);
-				
+                                
 				//Crear una instancia de orador
 				Orador oradorDB = new Orador(id_orador,nombre,apellido,mail, tema, fecha_alta, estado);
-				
+				logger.info("Estado: "+estado);
 				//Si el Orador está vigente (estado = True), lo agrego a la lista 
-//				if(estado)
-//                                {
-//                                    list.add(oradorDB);
-//                                }
-                            list.add(oradorDB);
+				if("1".equals(estado))
+                                {
+                                    list.add(oradorDB);
+                                }
+//                            list.add(oradorDB);
 			}			
 			
 			//cierro la conexion
