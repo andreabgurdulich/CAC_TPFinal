@@ -36,7 +36,7 @@
 
                         <li class="nav-item">
 
-                            <a class="nav-link active text-bg-dark border rounded-5 text-center" aria-current="page" href="#">
+                            <a class="nav-link active text-bg-dark border rounded-5 text-center" aria-current="page" href="<%=request.getContextPath()%>">
 
                                 Conferencia Bs As
 
@@ -52,7 +52,7 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link" aria-current="page" href="#">La Conferencia</a>
+                                <a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>">La Conferencia</a>
 
                             </li>
 
@@ -70,13 +70,13 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link" aria-current="page" href="#" style="color: lightslategray;">ConviÃ©rtete en orador</a>
+                                <a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>/alta.jsp" style="color: lightslategray;">Conviértete en orador</a>
 
                             </li>
 
                             <li class="nav-item">
 
-                                <a class="nav-link" aria-current="page" href="ComprarTickets.html" style="color:green;">Comprar tickets</a>
+                                <a class="nav-link" aria-current="page" href="comprarTickets.jsp" style="color:green;">Comprar tickets</a>
 
                             </li>
 
