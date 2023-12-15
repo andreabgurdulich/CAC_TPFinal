@@ -64,7 +64,7 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link" href="#" style="color: lightslategray;">El lugar y la fecha</a>
+                                <a class="nav-link" href="<%=request.getContextPath()%>" style="color: lightslategray;">El lugar y la fecha</a>
 
                             </li>
 
