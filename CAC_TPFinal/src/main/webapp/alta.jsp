@@ -3,12 +3,12 @@
             <%@include file="head.jsp" %>
     </head>
 
-    <body>
+    <body class="bg-secondary-subtle">
         <main>
             <!-- ACA VA EL NAVBAR  -->
             <%@include file="navbar.jsp" %>
-            <div class="container">
-                <section class="border border-primary rounded-4 col-6 mx-auto text-center" style="background-color: aquamarine">
+            <div class="containerk-fluid">
+                <section class="border border-secondary rounded-4 col-6 mx-auto text-center bg-warning"> <!-- style="background-color: aquamarine" -->
                     <h1 class="text-center my-4">Alta</h1>
                     <!--  JSP -->
                     <form method="post"
@@ -26,7 +26,7 @@
                           <input name="tema" type="text" class="form-control" id="codigoTextarea" maxlength="255" placeholder="Tema">
                         </div>
                         <select class="form-select6" aria-label="Default select example">
-                            <option selected="1" class="col-2">Activo</option>
+                            <option selected="1" class="col-2">Habilitado</option>
                             <option value="0" class="col-2">Deshabilitado</option>
                           </select>
                         <br>

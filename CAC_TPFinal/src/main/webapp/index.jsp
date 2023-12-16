@@ -51,8 +51,9 @@
             
               que tenemos para ti. ¡Te esperamos!</p>
       
-            <button type="button" class="btn btn-outline-light btn-lg" aria-current="page">Quiero ser orador</button>
+            <!--             <button type="button" class="btn btn-outline-light btn-lg" aria-current="page">Quiero ser orador</button> -->
       
+            <a class="btn btn-outline-light btn-lg" href="alta.jsp" role="button">Quiero ser orador</a>
             <a class="btn btn-success btn-lg" href="comprarTickets.jsp" role="button">Comprar Tickets</a>
       
           </div>

@@ -9,22 +9,22 @@
         </title>	
     </head>
 	
-    <body>
+    <body class="bg-secondary-subtle" >
         <!-- ACA VA EL NAVBAR  -->
         <%@include file="navbar.jsp" %>
-        <main>
+        <main >
             <div class="container">
                 
                 <section class="bg-secondary-subtle border rounded-5 m-4 px-2 pt-2 pb-3 col-12 mx-auto text-center">
       <h2 class="my-4">Listado de oradores</h2>
-      <table class="table table-sm table-striped table-hover border border-success">
+      <table class="table table-sm table-striped table-hover table-responsive border border-success">
                       <thead>
                         <tr>
                           <th scope="col">Nombre</th>
                           <th scope="col">Apellido</th>
                           <th scope="col">Mail</th>
                           <th scope="col">Tema</th>
-                          <th schope="col">Fecha Alta</th>
+                          <th scope="col">Fecha Alta</th>
                         </tr>
                       </thead>
           <% 
@@ -46,7 +46,7 @@
                 <td><%=orador.getTema() %></td>
                 <td><%=orador.getFecha_alta() %><td>
                 
-                <td>
+                <td scope="row">
                   <a class="btn btn-danger" href="<%=request.getContextPath()%>/api/EliminarOradorController?id=<%=orador.getId_orador()%>" role="button">Eliminar</a> | 
                   <a class="btn btn-secondary" href="<%=request.getContextPath()%>/api/EditarOradorController?id=<%=orador.getId_orador()%>" role="button">Editar</a>
                 </td>
