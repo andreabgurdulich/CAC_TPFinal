@@ -59,16 +59,17 @@
                     </table>
                 </section>
             </div>
-                            
-                            <script>
-        function confirmarEliminar(id) {
-            var confirmacion = confirm("¿Estás seguro de que deseas eliminar este orador?");
-            if (confirmacion) {
-                // Si el usuario confirma, redirige al controlador de eliminación
-                window.location.href = '<%=request.getContextPath()%>/api/EliminarOradorController?id=' + id;
-            }
-        }
-    </script>
+
+            <script>
+                function confirmarEliminar(id) {
+                    var confirmacion = confirm("¿Estás seguro de que deseas eliminar este orador?");
+                    if (confirmacion) {
+                        // Si el usuario confirma, redirige al controlador de eliminación
+                        window.location.href = '<%=request.getContextPath()%>/api/EliminarOradorController?id=' + id;
+                    }
+                }
+            </script>
         </main>
+        <%@include file="footer.jsp" %>
     </body>	
 </html>

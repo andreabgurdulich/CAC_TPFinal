@@ -1,20 +1,64 @@
-function alta()
+function borrar(){
+    var nombre = document.getElementById("Nombre");
+    nombre.value="";  
+    
+    var apellido = document.getElementById("Apellido");
+    apellido.value=""; 
+
+    var correo = document.getElementById("Correo");
+    correo.value=""; 
+
+    var categoria = document.getElementById("Categoria");
+    categoria.value="selected";
+
+    var cantidad = document.getElementById("Cantidad");
+    cantidad.value="";
+
+    var total = document.getElementById("Total");
+    total.value="";
+}
+
+function resumen()
 {
     var nombre = document.getElementById("Nombre");
     var apellido = document.getElementById("Apellido");
-    var mail = document.getElementById("Mail");
-    var tema = document.getElementById("Tema");
+    var correo = document.getElementById("Correo");
+    var cantidad = parseInt(document.getElementById("Cantidad").value)||0;
+    var categoria = parseInt(document.getElementById("Categoria").value);
+    var total = document.getElementById("Total");
 
-    if("".equals(nombre)||"".equals(apellido)||"".equals(mail)||"".equals(tema))
+    if(nombre===""||apellido===""||correo===""||cantidad===0||categoria===0)
     {
-        document.getElementById('popup').style.display = 'block';
-        document.getElementById('overlay').style.display = 'block';
-    } 
+        total.value="Debe completar todos los campos";
+    }
+    else
+    {
+        if(cantidad<1||cantidad>10)
+        {
+            total.value="Cantidad debe estar entre 1 y 10"
+        }
+        else
+        {
+            var resumen=new Number();
+            switch(categoria)
+            {
+                case 1: 
+                resumen = cantidad*200*0.2;
+                total.value="Total a pagar: $"+resumen;
+                break;
+            
+                case 2: 
+                resumen = cantidad*200*0.5;
+                total.value="Total a pagar: $"+resumen;
+                break;
     
-}
-
-function cerrarPopup() {
-    // Ocultar el popup y el fondo oscuro
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';    
+                case 3: 
+                resumen = cantidad*200*0.85;
+                total.value="Total a pagar: $"+resumen;
+                break;
+            }
+                
+        }
+    }    
+    
 }
