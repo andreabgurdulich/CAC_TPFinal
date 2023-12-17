@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dto;
 
 import java.util.Date;
@@ -11,7 +7,7 @@ import java.util.Date;
  * @author Usuario
  */
 public class Orador {
-    private int id_orador;
+    private Long id;
     private String nombre;
     private String apellido;
     private String mail;
@@ -19,8 +15,8 @@ public class Orador {
     private Date fecha_alta;
     private String estado;
 
-    public Orador(int id_orador, String nombre, String apellido, String mail, String tema, Date fecha_alta, String estado) {
-        this.id_orador = id_orador;
+    public Orador(Long id_orador, String nombre, String apellido, String mail, String tema, Date fecha_alta, String estado) {
+        this.id = id_orador;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
@@ -29,24 +25,31 @@ public class Orador {
         this.estado = estado;
     }
 
-    public Orador(int id_orador, String nombre, String apellido, String mail, String tema) {
-        this.id_orador = id_orador;
+    public Orador(Long id_orador, String nombre, String apellido, String mail, String tema) {
+        this.id = id_orador;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.tema = tema;
     }
     
+    public Orador(Long id_orador, String nombre, String apellido, String mail, String tema, String estado) {
+        this.id = id_orador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.tema = tema;
+        this.estado = estado;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
-
-    public int getId_orador() {
-        return id_orador;
-    }
-
-    public void setId_orador(int id_orador) {
-        this.id_orador = id_orador;
-    }
-
     public String getNombre() {
         return nombre;
     }

@@ -43,7 +43,7 @@ public class ConsultarOradorController extends HttpServlet {
 			if(rs.next()) {//�hay datos?
 				// rs > sacando los datos
                                 
-				int id_orador = rs.getInt(1);//tomar la primer columna
+				Long id_orador = rs.getLong(1);//tomar la primer columna
 				String nombre = rs.getString(2);
 				String apellido = rs.getString(3);
 				String mail = rs.getString(4);

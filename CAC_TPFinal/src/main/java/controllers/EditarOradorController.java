@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -29,10 +28,12 @@ public class EditarOradorController extends HttpServlet {
 		//Crear ProductoDAO
 		OradorDAO dao = new OradorDAO();
 		
+                logger.info("String Id: " + id);
 		//Instanciar un Orador con el método getByID del OradorDAO.
-		Orador oradorDB = dao.getById(Integer.parseInt(id));
+		Orador oradorDB = dao.getById(Long.valueOf(id));
 		
-		//Guardar el Request
+                logger.info(oradorDB.toString());
+		//Guardar el Request                            
 		req.setAttribute("orador", oradorDB);
 		
 		//ir a la siguiente pagina
@@ -51,9 +52,10 @@ public class EditarOradorController extends HttpServlet {
                 
 		//Crear OradorDAO
 		OradorDAO dao = new OradorDAO();
+                Orador oraActualizado = new Orador(Long.valueOf(id_orador), nombre, apellido, mail, tema, estado);
 		//Invocamos el Método 
                 logger.info("id orador: "+id_orador);
-		dao.actualizarOrador(Integer.parseInt(id_orador),nombre, apellido, mail, tema, estado);
+		dao.actualizarOrador(oraActualizado);
 
 		//ir a la siguiente pagina
 		resp.sendRedirect(req.getContextPath()+"/api/ListadoOradorController");

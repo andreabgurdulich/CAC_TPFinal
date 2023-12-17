@@ -5,17 +5,22 @@
 package controllers;
 
 import daos.OradorDAO;
+import dto.Orador;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet("/api/CrearOradorController")
 public class CrearOradorController extends HttpServlet {
 
-	@Override
+	static Logger logger = LoggerFactory.getLogger(EditarOradorController.class);
+        
+        @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String nombre = req.getParameter("nombre");

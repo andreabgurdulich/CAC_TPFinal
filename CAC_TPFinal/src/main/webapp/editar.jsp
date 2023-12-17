@@ -13,17 +13,11 @@
                     <% 
                         Orador orador = (Orador)request.getAttribute("orador");
                     %>
-                    <h1>Editar orador ID=<%=orador.getId_orador()%></h1>
+                    <h1>Editar orador</h1>
                     <!--  JSP -->
                     <form method="POST"
                             action="<%=request.getContextPath()%>/api/EditarOradorController">
-                        
-                        <div class="mb-3">
-                              <label for="exampleFormControlInput1" class="form-label">Id</label>
-                              <input name="id"
-                                    value="<%=orador.getId_orador()%>"  
-                                    type="text" class="form-control" id="id" placeholder="Id" maxlength="50">
-                            </div>
+                            <input type="hidden" id="id" name="id" value="<%=orador.getId()%>">
                             <div class="mb-3">
                               <label for="nombre" class="form-label">Nombre</label>
                               <input name="nombre"
@@ -47,7 +41,7 @@
                                     value="<%=orador.getTema()%>" 
                                     type="text" class="form-control" id="tema" placeholder="Tema" maxlength="50">
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" style="display: none">
                               <label for="estado" class="form-label">Estado</label>
                               <input name="estado"
                                     value="<%=orador.getEstado()%>" 
